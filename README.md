@@ -45,6 +45,14 @@ const router = new VueRouter({
 })
 
 window.router = router;
+
+window.router = router;
+
+const app = new Vue({
+  router:router
+}).$mount('#app')
+
+
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
