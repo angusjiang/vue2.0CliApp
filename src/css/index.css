@@ -1,0 +1,24 @@
+.start-box {
+	display: box;
+	display: -webkit-box;
+}
+.box-orient {
+	box-orient: vertical;
+	-webkit-box-orient: vertical;
+}
+.box-align {
+	box-align:center;
+	-webkit-box-align:center;
+}
+.box-pack {
+	box-pack:justify;
+	-webkit-box-pack:justify;
+}
+.pack-center{
+  box-pack:center;
+  -webkit-box-pack:center;
+}
+.box-flex{
+  box-flex:1;
+  -webkit-box-flex:1;
+}

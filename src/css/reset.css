@@ -1,0 +1,150 @@
+@charset 'utf-8'
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+ol,
+dd,
+dt,
+dl,
+input,
+textarea,
+figure,
+figcaption,
+button {
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+ul,
+ol {
+    list-style: none
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, STHeiTi-Light, STHeiTi, sans-serif;
+    line-height: 1.5;
+    font-size: 12px;
+    background: #fff;
+    color: #000;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    margin: 0;
+    padding: 0
+}
+
+p {
+    margin: 0;
+    padding: 0
+}
+
+a,
+a:visited {
+    text-decoration: none
+}
+
+img {
+    border: 0;
+    max-width: 100%
+}
+
+table {
+    width: auto;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+.center{
+    text-align: center;
+}
+html{
+    font-size: 62.5%;
+}
+body,html{
+    height: 100%;
+}
+@media screen and (min-width: 400px) and (orientation: portrait) {
+    html {
+        font-size: 87.5%
+    }
+}
+
+@media screen and (min-width: 540px) and (orientation: portrait) {
+    html {
+        font-size: 100%
+    }
+}
+
+@media screen and (width: 418px) and (-webkit-device-pixel-ratio: 2.5),
+screen and (width: 432px) and (-webkit-device-pixel-ratio: 2.5) and (orientation: portrait) {
+    html {
+        font-size: 62.5%
+    }
+}
+
+@media screen and (width: 480px) and (-webkit-device-pixel-ratio: 1.5),
+screen and (width: 465px) and (-webkit-device-pixel-ratio: 1.5) and (orientation: portrait) {
+    html {
+        font-size: 68.75%
+    }
+}
+
+@media screen and (min-width: 400px) and (orientation: portrait) {
+    html,
+    body {
+        font-size: 62.5%
+    }
+}
+.app-main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #eee;
+}
+.nav-top {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.app-content {
+    position: absolute;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 55px;
+}
+.footer-nav {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    table-layout: fixed;
+}
