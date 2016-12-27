@@ -47,10 +47,10 @@
 				</ul>
 				
 			</div>
-			<p v-show="loading" class="page-infinite-loading">
+			<div v-show="loading" class="page-infinite-loading start-box box-align">
 		        <mt-spinner type="fading-circle"></mt-spinner>
-		        <p>加载中...</p>
-		    </p>
+		        加载中...
+		    </div>
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>

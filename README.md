@@ -21,7 +21,7 @@ npm run build
 
 #main.js 中组件是全局引入，cli的build做好了处理，开发环境全局引入文件很大，但是线上环境文件会很小，本地文件大对开发没什么影响，
 #当然也可以异步按需引入 import {xxx} from 'ooo',实践中发现若是这种按需加载还是将ooo全部引入了，
-#除非写全了按需加载的具体路径import {xxx} form 'node_modules/hehe/aaa/ooo',否则还是相当于全局引入
+#除非写全了按需加载的具体路径import {xxx} form 'node_modules/hehe/aaa/xxx',否则还是相当于全局引入
 
 import Vue from 'vue'
 import VueRouter from 'vue-router' 
@@ -48,13 +48,11 @@ const router = new VueRouter({
 
 window.router = router;
 
-window.router = router;
-
 const app = new Vue({
   router:router
 }).$mount('#app')
 
-
+![github](https://github.com/angusjiang/vue2.0CliApp/tree/master/src/iamges/123.png "github")  
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
