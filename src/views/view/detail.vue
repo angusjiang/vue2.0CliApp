@@ -9,6 +9,7 @@
 			</mt-header>
 		</div>
 		<div class="app-content">
+			<div>{{postData}}</div>
 			<ul>
 				<li class="item" v-for="(item, index) in items">{{item.name}}-- {{item.age}}</li>
 			</ul>
@@ -22,7 +23,8 @@
 				items:[
 					{name: 'jxj',age: 25},
 					{name: 'jxj2',age: 26},
-				]
+				],
+				postData: ''
 			}
 		},
 		components: {
@@ -31,7 +33,8 @@
 			
 		},
 	    created() {
-	      console.log(this.$route);
+	    	this.postData = this.$route.params.id;
+	      	console.log(this.$route);
 	    }
 	}
 </script>

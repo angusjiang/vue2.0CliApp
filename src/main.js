@@ -15,10 +15,9 @@ Vue.use(VueResource);
 // Vue.use(MintUI)
 Vue.use(ElementUI)
 
-
 window.debug = true;
 window.Vue = Vue;
-console.log(Vue);
+
 const First = {
   template: '<div><h2>我是第 1 个子页面</h2></div>'
 }

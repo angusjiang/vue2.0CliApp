@@ -1,3 +1,6 @@
+//webpack 提供了路由的按需加载，通过component 的回掉函数异步加载，
+//若只是通过require 或是import 会立刻执行，各个模块就没办法按需加载组件，只能全局加载
+
 var routes =　[
   {
     path: '/home',
@@ -9,21 +12,29 @@ var routes =　[
       {
         path:'detail',
         name: 'homedetail',
-        component: require('../views/view/detail.vue')
+        component: function(resolve) {
+          require(['../views/view/detail.vue'], resolve)
+        } 
       }
     ]
   },
   {
   	path: '/my',
-  	component: require('../views/my.vue')
+  	component: function(resolve) {
+      require(['../views/my.vue'], resolve)
+    } 
   },
   { 
   	path: '/order', 
-  	component: require('../views/order.vue')
+  	component: function(resolve) {
+      require(['../views/order.vue'], resolve)
+    } 
   },
   { 
     path: '/discovery', 
-    component: require('../views/discovery.vue') 
+    component: function(resolve) {
+      require(['../views/discovery.vue'] ,resolve)
+    } 
   },
   { //默认首页
     path: '/',
@@ -31,7 +42,9 @@ var routes =　[
   },
   { //默认错误页
     path: '*',
-    component: require('../404.vue')
+    component: function(resolve) {
+      require(['../404.vue'], resolve)
+    } 
   }
 ]
 export {routes}

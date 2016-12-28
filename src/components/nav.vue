@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     selectActive(item, index)  {
-      
       this.foots.forEach((item, index) => {
         item.select = false;
       });
@@ -50,7 +49,7 @@ export default {
   created() {
     var _ = this;
     this.foots.forEach((item, index) => {
-      if (_.$route.path.replace(/\//g, '') == item.src.replace(/\//g,'')) {
+      if (_.$route.path.split('/')[1].replace(/\//g, '') == item.src.replace(/\//g,'')) {
         item.select = true;
       } else {
         item.select = false;

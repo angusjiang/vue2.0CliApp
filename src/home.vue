@@ -1,32 +1,4 @@
 <template>
-	<!-- <div class="page" style="display:block;">
-	    <header class="bar bar-nav">
-	        <mt-header title="外卖首页标题首页标题首页标题首页标题首页标题首页标题首页标题">
-			  <router-link to="/" slot="left">
-			    <mt-button icon="back">返回</mt-button>
-			  </router-link>
-			  <mt-button icon="more" slot="right"></mt-button>
-			</mt-header>
-	    </header>
-	    <nav class="bar bar-tab">
-	        <a class="tab-item external active" href="#">
-	            <span class="icon icon-home"></span>
-	            <span class="tab-label">首页</span>
-	        </a>
-	        <a class="tab-item external" href="#">
-	            <span class="icon icon-star"></span>
-	            <span class="tab-label">收藏</span>
-	        </a>
-	        <a class="tab-item external" href="#">
-	            <span class="icon icon-settings"></span>
-	            <span class="tab-label">设置</span>
-	        </a>
-	    </nav>
-	    <div class="content">
-	        <div class="content-block">这里是content</div>
-	    </div>
-	</div> -->
-
 	<div class="app-main">
 		<div class="nav-top">
 			<mt-header title="外卖首页标题首页标题首页标题首页标题首页标题首页标题首页标题">
