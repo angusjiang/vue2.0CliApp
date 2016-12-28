@@ -12,15 +12,22 @@
 			
 		    发现了什么啊
 
+		    <div @click="pop"> 点击我通过iframe跨域请求一个网页 </div>
+
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>
 		</div>
+		<popModel></popModel>
+		<!-- <mt-popup v-model="popupVisible" popup-transition="popup-fade" position="left">
+		  这是个阿斯兰的反射率的发
+		</mt-popup> -->
 	</div>
 	
 </template>
 <script>
 	import navigtor from '../components/nav.vue'
+	import popModel from '../components/pop-model.vue'
 	export default{
 		data() {
 			return {
@@ -32,10 +39,16 @@
 			}
 		},
 		components: {
-			navigtor
+			navigtor,
+			popModel
 		},
 		methods: {
-			
+			pop() {
+				console.log(this.$children);
+			},
+			test() {
+
+			}
 		}
 	}
 </script>
