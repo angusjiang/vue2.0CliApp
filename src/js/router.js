@@ -18,24 +18,48 @@ var routes =　[
       }
     ]
   },
+
+
   {
   	path: '/my',
   	component: function(resolve) {
       require(['../views/my.vue'], resolve)
     } 
   },
+
+
   { 
   	path: '/order', 
   	component: function(resolve) {
       require(['../views/order.vue'], resolve)
-    } 
+    },
+    children: [
+      {
+        path:'orderdetail',
+        name: 'orderdetail',
+        component: function(resolve) {
+          require(['../views/view/order-detail.vue'], resolve)
+        }
+      },
+      {
+        path: 'child/:id',
+        name: 'sunchild',
+        component: function(resolve) {
+          require(['../views/view/sunchild.vue'], resolve)
+        }
+      }
+    ]
   },
+
+
   { 
     path: '/discovery', 
     component: function(resolve) {
       require(['../views/discovery.vue'] ,resolve)
     } 
   },
+
+
   { //默认首页
     path: '/',
     redirect: '/home'
