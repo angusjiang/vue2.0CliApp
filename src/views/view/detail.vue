@@ -31,7 +31,7 @@
 			
 		},
 	    created() {
-	      console.log(this.$route.params.id);
+	      console.log(this.$route);
 	    }
 	}
 </script>

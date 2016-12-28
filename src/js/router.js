@@ -1,10 +1,14 @@
 var routes =　[
   {
     path: '/home',
-    component: require('../home.vue'),
+    name: 'home',
+    component: function(resolve) {
+      require(['../home.vue'], resolve)
+    },
     children: [
       {
-        path:'detail/:id',
+        path:'detail',
+        name: 'homedetail',
         component: require('../views/view/detail.vue')
       }
     ]
