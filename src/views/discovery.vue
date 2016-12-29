@@ -9,7 +9,9 @@
 			</mt-header>
 		</div>
 		<div class="app-content">
+
 		    <div @click="pop" :style="{'marginTop': '40px'}"> 点击我通过通用组件iframe跨域请求一个网页 </div>
+
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>

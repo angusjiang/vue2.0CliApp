@@ -26,7 +26,6 @@ const User = {
   template: '<div>User {{ $route.params.userid }}'
 }
 
-import My from './views/my.vue'
 
 import {routes} from './js/router'
 

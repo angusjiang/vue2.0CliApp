@@ -12,7 +12,7 @@
 			<div class="page-infinite-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
 		      <ul class="page-infinite-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50" infinite-scroll-immediate-check="false"  infinite-scroll-listen-for-event="needNow()">
 		        <li v-for="(item, index) in articles" class="page-infinite-listitem">
-		        	<router-link :to="{name: 'homedetail', params:{id: item.title}}" :style="{'display':'block','width':'100%','height':'100%'}">{{index}}{{ item.title }}</router-link></li>
+		        	<router-link :to="{name: 'homedetail', params:{id: item.title}}" :style="{'display':'block','width':'100%','height':'100%'}">{{index}}{{ item.title }} click me</router-link></li>
 		      </ul>
 		      <p v-show="loading" class="page-infinite-loading" :style="{'marginBottom':'55px'}">
 		        <mt-spinner type="fading-circle"></mt-spinner>

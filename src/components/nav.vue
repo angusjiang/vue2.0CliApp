@@ -30,7 +30,7 @@ export default {
           select: false
         },
         { 
-          src: '/my',
+          src: '/mine',
           name: '我的',
           select: false
         }

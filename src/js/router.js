@@ -20,10 +20,10 @@ var routes =　[
   },
 
 
-  {
-  	path: '/my',
-  	component: function(resolve) {
-      require(['../views/my.vue'], resolve)
+  { 
+    path: '/mine', 
+    component: function(resolve) {
+      require(['../views/mine.vue'], resolve)
     } 
   },
 
