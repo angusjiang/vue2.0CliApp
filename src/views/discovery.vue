@@ -9,19 +9,13 @@
 			</mt-header>
 		</div>
 		<div class="app-content">
-			
-		    发现了什么啊
-
-		    <div @click="pop"> 点击我通过iframe跨域请求一个网页 </div>
-
+		    <div @click="pop" :style="{'marginTop': '40px'}"> 点击我通过通用组件iframe跨域请求一个网页 </div>
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>
 		</div>
-		<popModel></popModel>
-		<!-- <mt-popup v-model="popupVisible" popup-transition="popup-fade" position="left">
-		  这是个阿斯兰的反射率的发
-		</mt-popup> -->
+		<!-- 父组件中通过调用子组件并传递参数 -->
+		<popModel :popstatus="popstatus" :title="titleStr"></popModel>
 	</div>
 	
 </template>
@@ -35,7 +29,9 @@
 				list: [],
 		        loading: false,
 		        allLoaded: false,
-		        wrapperHeight: 0
+		        wrapperHeight: 0,
+		        popstatus: false,
+		        titleStr: '这是自定义的title'
 			}
 		},
 		components: {
@@ -44,7 +40,11 @@
 		},
 		methods: {
 			pop() {
-				console.log(this.$children);
+				this.popstatus = true;
+				var url = 'http://game.vanthink.cn/TB2.0/#/detail/6803?is_preview=1&hide_controls=1' + '?_req=' + new Date().getTime();
+				popModel.methods.set(url,{},function () {
+					
+				});
 			},
 			test() {
 

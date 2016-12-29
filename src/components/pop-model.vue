@@ -1,18 +1,15 @@
 <template>
-  <mt-popup  v-model="popupVisible" popup-transition="popup-fade"  position="left" :style="{'height':'100%','width':'100%'}">
+  <mt-popup  v-model="myResult" position="left" :style="{'height':'100%','width':'100%'}">
       <div class="nav-top">
         <div class="nav-top">
           <mt-header :title="title">
-            <router-link to="/" slot="left"  @click="hideModal($event)">
-              <mt-button icon="back">返回</mt-button>
-            </router-link>
-            <mt-button icon="close" slot="right"  @click="hideModal($event)">X</mt-button>
+            <mt-button icon="close" slot="right"  @click.native="hideModal($event)">X</mt-button>
           </mt-header>
         </div>
       </div>
-      <div class="app-content">
+
         <iframe class="frame-box" frameBorder="0"  id="framId" name="refreshAlarm"></iframe>
-      </div>
+
   </mt-popup>
   
 </template>
@@ -24,119 +21,59 @@
     export default {
         data() {
             return {
-                title: '这是一个弹层',
                 url: '',
-                openBag: false,
-                popupVisible: true
+                myResult: this.popstatus
             }
         },
-        props: ['msg','total','popstatus','fromstatus','trsi','fritem'],
-        set(url,data,callback) {
-            var data = $.extend({
-                _req: App.random()
-            },data);
-            var url = url + '?' + App.serialize(data);
-            $.popup('.popup-game');
-            document.querySelector('iframe').src = url;
-            remberUrl = url;   
-            var self = this; 
-            var ls = App.addLoadingSpinner({'el':'.content','text':'初始化中...'});
-            document.querySelector('iframe').onload = function() {
-               
-                if(typeof callback === 'function') {
-                    if (callback()) {
-                        remberThis = callback();
-                    };
-                    self.readMessage(callback);
-                }
-                ls.hide();
-            }
-        },
-        // iframe commucation
-        readMessage: function(cb) {
-            var self = this;
-            var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-            var eventer = window[eventMethod];
-            var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
-            // Listen to message from child window
-            eventer(messageEvent, function (e) {
-                var key = e.message ? "message" : "data";
-                var data = e[key];
-                cb(data);
-                return;
-                if (data['taskname'] == 'close' || Array.isArray(data)) {
-                    me.hide();
-                }
-                if (data['taskname'] == 'reload' || data['taskName'] == 'reload') {
-                    me.reload();
-                }
-
-            }, false);
+        //自组件显示的声明props,来于父组件交互数据,vue2.0取消了双向的数据绑定
+        props: ['popstatus','title'],
+        watch: {
+            //取消了双向数据绑定只能从父级中取得数据后copy一个副本myResult,通过watch 父级数据来改变副本
+            popstatus(val) {
+                this.myResult = val;
+            },
         },
         methods: {
             hideModal(e) {
                 e.preventDefault();
-                this.popupVisible = false;
-                // $.confirm('确定要离开活动吗?',
-                //     function () {
-                //         $.closeModal('.popup-game');
-                //         document.querySelector('iframe').src = '';
-                //         document.querySelector('iframe').src = remberUrl;
-                //         document.querySelector('iframe').onload = function() {
-                //         }
-                //         document.querySelector('iframe').src = '';
-                //     },
-                //     function () {
-                //     }
-                // );
+                this.myResult = false;
+                document.querySelector('iframe').src = '';
+                document.querySelector('iframe').onload = function() {
+                }
             },
-            collectF(index,item){ //收藏题目
-                let self = this;
-                if (item.is_owner) {
-                    $.alert('自己的题目不能收藏哦');
-                    return;
-                };
-                self.popstatus = true;
-                self.fromstatus = true;
-                self.fritem = item;
-            },
-            putBag() {
-                let self = this;
-                App.send('/api2/teacher_shopcart/add', {
-                    data:{
-                        testbank_nos: JSON.stringify([self.msg.no])
-                    },
-                    loadingBar: {
-                        text: '选择中...'
-                    },
-                    type: 'post',
-                    success: function(result, isSuccess) {
-                        if(isSuccess) {
-                          if (result.errcode === 0) {
-                            $.toast('选中成功');
-                            self.total = result.data.num;
-                          };  
-                        } else {
-                            $.alert(result.errstr);
-                        }
+            set(url,data,callback) {
+                var self = this; 
+                var url = url + '?' + '_req=' + new Date().getTime();
+                document.querySelector('iframe').src = url;
+                remberUrl = url;   
+                document.querySelector('iframe').onload = function() {
+                   
+                    if(typeof callback === 'function') {
+                        if (callback()) {
+                            remberThis = callback();
+                        };
+                        // self.readMessage(callback);
                     }
-                });
-            }
+
+                }
+            },
         },
         created() {
-            this.$watch('$parent.trantsData', function(a,b) {
-                if (a) {
-                    this.openBag = true;
-                };
-            })
         }
     };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.do-btns {
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+    .frame-box {
+        margin-top: 40px;
+    }
+    .do-btns {
         padding: 1rem;
         position: fixed;
         border-top: 0px;
