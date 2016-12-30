@@ -3,7 +3,7 @@
     <mt-tab-item v-for="(item, index) in foots" :id="item.name" @click.native="selectActive(item, index)" :class="{'is-selected': item.select}" :href="item.url" >
       <!-- <img slot="icon" class="el-icon-delete"> -->
       <div class="icon-outer start-box box-align pack-center">
-        <i class="iconfont" :class="item.src"> </i>
+        <i class="iconfont" :class="item.icon"> </i>
       </div>
       {{item.name}}
     </mt-tab-item>
@@ -20,24 +20,24 @@ export default {
         { 
           src: '/home',
           name: '外卖',
-          src: 'icon-gifts',
+          icon: 'icon-gifts',
           select: true
         },
         { 
           src: '/order',
           name: '订单',
-          src: 'icon-form',
+          icon: 'icon-form',
           select: false
         },
         { 
           src: '/discovery',
-          src: 'icon-search',
+          icon: 'icon-search',
           name: '发现',
           select: false
         },
         { 
           src: '/mine',
-          src: 'icon-accountfilling',
+          icon: 'icon-accountfilling',
           name: '我的',
           select: false
         }
