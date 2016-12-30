@@ -5,12 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- viewport 后面加上 minimal-ui 在safri 体现效果 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 隐藏状态栏/设置状态栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
     <title>angus</title>
     <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js'></script>
     <!--<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <script src="http://s1.vued.vanthink.cn/d8ef892b3140/sm.js"></script>-->
   </head>
   <body>
+     <!-- loading start -->
+    <div class="app-loading">
+        <div class="box">
+            <div class="line-spin-fade-loader">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <h2>welcome angus app</h2>
+            <p>just for study vue</p>
+        </div>
+    </div>
+    <!-- loading end -->
     <div id="app">
       <!-- <p>
         
@@ -23,6 +57,10 @@
       <!-- 实例中的字符串模板会替换挂载元素#app，挂在元素中的内容将会被忽略，除非模板内容有分发 -->
       <!-- <div class="hehe">这里的都看不见</div> -->
     </div>
-
+    <script>
+      setTimeout(function(){
+        $('.app-loading').addClass('app-loading-hide');
+      },2000);
+    </script>
   </body>
 </html>

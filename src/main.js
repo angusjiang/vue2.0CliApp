@@ -9,6 +9,7 @@ import './css/reset.css'
 import 'mint-ui/lib/style.css'
 import 'element-ui/lib/theme-default/index.css'
 import './css/index.css'
+import './iconfont/iconfont.css'
 //注册插件 
 Vue.use(VueRouter);
 Vue.use(VueResource);

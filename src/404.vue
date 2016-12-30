@@ -31,6 +31,7 @@
         .error-page{
             text-align: center;
             font-size: .75rem;
+            height: 100%;
         }
         .error-page img{
             width: 12rem;

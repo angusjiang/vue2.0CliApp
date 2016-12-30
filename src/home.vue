@@ -75,6 +75,7 @@
 			        },
 			        emulateJSON: true
 			    }).then(function(response) {
+			    	
 			    	//请求成功后loaddmore事件再次开启，隐藏加载图标
 			    	that.loading = false;
 			    	if (isAdd) {

@@ -9,9 +9,18 @@
 			</mt-header>
 		</div>
 		<div class="app-content">
-
 		    <div @click="pop" :style="{'marginTop': '40px'}"> 点击我通过通用组件iframe跨域请求一个网页 </div>
-
+		    <div>
+		    	<div class="total" v-for="(item, index) in hehe" :style="{'marginBottom':'15px'}">
+		    		<p>my total : {{item.myTotal}}</p>
+		    		<ul>
+		    			<li :style="{'height':'15px'}" v-for="(detail, index) in item.detailLi">
+		    				per count 
+		    				<input :value="detail.inpNum" type="text" v-model="detail.inpNum">
+		    			</li>
+		    		</ul> 
+		    	</div>
+		    </div>
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>
@@ -33,7 +42,17 @@
 		        allLoaded: false,
 		        wrapperHeight: 0,
 		        popstatus: false,
-		        titleStr: '这是自定义的title'
+		        titleStr: '这是自定义的title',
+		        hehe: [
+		        	{
+		        		myTotal: 0,
+		        		detailLi: [{inpNum: 0},{inpNum:1}]
+		        	},
+		        	{
+		        		myTotal: 1,
+		        		detailLi: [{inpNum: 2},{inpNum:3}]
+		        	}
+		        ]
 			}
 		},
 		components: {
@@ -51,6 +70,19 @@
 			test() {
 
 			}
+		},
+		created() {
+			var that = this;
+			this.$watch('hehe',function(newD, oldD) {
+
+				for (let i = 0; i < that.hehe.length; i++) {
+					var aa = 0;
+					for (let j = 0; j < that.hehe[i].detailLi.length; j++) {
+						aa += parseInt(that.hehe[i].detailLi[j].inpNum);
+					};
+					that.hehe[i].myTotal = aa;
+				};
+			}, {deep: true});
 		}
 	}
 </script>
