@@ -7,7 +7,7 @@
       </div>
       {{item.name}}
     </mt-tab-item>
-  </mt-tabbar>
+  </mt-tabbar>m
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
       foots: [
         { 
           src: '/home',
-          name: '外卖',
+          name: '主页',
           icon: 'icon-gifts',
           select: true
         },

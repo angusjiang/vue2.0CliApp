@@ -5,48 +5,35 @@ var routes =　[
   {
     path: '/home',
     name: 'home',
-    component: function(resolve) {
-      require(['../home.vue'], resolve)
-    },
+    component: resolve => require(['../home.vue'], resolve),
     children: [
       {
         path:'detail',
         name: 'homedetail',
-        component: function(resolve) {
-          require(['../views/view/detail.vue'], resolve)
-        } 
+        component: resolve => require(['../views/view/detail.vue'], resolve), 
       }
     ]
   },
 
-
   { 
     path: '/mine', 
-    component: function(resolve) {
-      require(['../views/mine.vue'], resolve)
-    } 
+    component: resolve => require(['../views/mine.vue'], resolve)
   },
 
 
   { 
   	path: '/order', 
-  	component: function(resolve) {
-      require(['../views/order.vue'], resolve)
-    },
+  	component: resolve => require(['../views/order.vue'], resolve),
     children: [
       {
         path:'orderdetail',
         name: 'orderdetail',
-        component: function(resolve) {
-          require(['../views/view/order-detail.vue'], resolve)
-        }
+        component: resolve => require(['../views/view/order-detail.vue'], resolve)
       },
       {
         path: 'child/:id',
         name: 'sunchild',
-        component: function(resolve) {
-          require(['../views/view/sunchild.vue'], resolve)
-        }
+        component: resolve => require(['../views/view/sunchild.vue'], resolve)
       }
     ]
   },
@@ -54,9 +41,7 @@ var routes =　[
 
   { 
     path: '/discovery', 
-    component: function(resolve) {
-      require(['../views/discovery.vue'] ,resolve)
-    } 
+    component: resolve => require(['../views/discovery.vue'] ,resolve)
   },
 
 

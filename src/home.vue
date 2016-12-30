@@ -23,7 +23,9 @@
 		<div class="footer-nav">
 			<navigtor></navigtor>
 		</div>
-		<router-view></router-view>
+		<transition name="home">
+			<router-view></router-view>
+		<transition>
 	</div>
 </template>
 <script>
@@ -97,5 +99,11 @@
 <style scope>
 	li{
 		height: 50px;
+	}
+	.home-enter-active, .home-leave-active {
+		transition: opacity .5s;
+	}
+	.home-enter, .home-leave {
+		opacity: 0;
 	}
 </style>
