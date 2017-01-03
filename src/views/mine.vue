@@ -18,6 +18,12 @@
 			  <img slot="icon" src="../assets/logo.png" width="24" height="24">
 			</mt-cell>
 			<mt-cell title="标题文字" icon="more" value="带 icon"></mt-cell>
+			<p>{{total}}</p>
+			<!-- 父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件 this is call events up -->
+			<test @increment="count"></test>
+			<test @increment="count"></test>
+			<test @increment="count"></test>
+
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>
@@ -31,17 +37,22 @@
 	import { Cell } from 'mint-ui';
 	Vue.component(Cell.name, Cell);
 	import navigtor from '../components/nav.vue';
+	import test from '../components/test.vue'
 	export default{
 		data() {
 			return {
-
+				counter: 0,
+				total: 0
 			}
 		},
 		components: {
-			navigtor
+			navigtor,
+			test
 		},
 		methods: {
-
+			count() {
+				this.total ++;
+			}
 		}
 	}
 </script>

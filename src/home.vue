@@ -23,9 +23,8 @@
 		<div class="footer-nav">
 			<navigtor></navigtor>
 		</div>
-		<transition name="home">
-			<router-view></router-view>
-		<transition>
+		
+		<router-view></router-view>
 	</div>
 </template>
 <script>
@@ -72,7 +71,7 @@
 				var that = this;
 				//请求前关闭loaddmore事件，显示加载图标
 				this.loading = true;
-				this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=' + this.page_size + '&start='+this.page_no, {}, {
+				this.$http.jsonp('https://api.douban.com/v2/movie/top250?count=' + this.page_size + '&start=' + this.page_no, {}, {
 			        headers: {
 			        },
 			        emulateJSON: true
