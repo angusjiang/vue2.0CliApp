@@ -1,6 +1,7 @@
 {
-  "name": "angus",
+  "name": "angus_test",
   "version": "1.0.0",
+  "main": "./src/main.js",
   "description": "angus vue2.0 project",
   "author": "angus",
   "private": true,
@@ -12,7 +13,8 @@
     "element-ui": "^1.0.8",
     "iview": "^0.9.10",
     "mint-ui": "^2.0.6",
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vue-fullcalendar": "^1.0.9"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

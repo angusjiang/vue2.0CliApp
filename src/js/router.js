@@ -41,7 +41,14 @@ var routes =　[
 
   { 
     path: '/discovery', 
-    component: resolve => require(['../views/discovery.vue'] ,resolve)
+    component: resolve => require(['../views/discovery.vue'] ,resolve),
+    children: [
+        {
+          path:'pickday',
+          name: 'pickday',
+          component: resolve => require(['../views/view/pickday.vue'], resolve)
+        }
+    ]
   },
 
 

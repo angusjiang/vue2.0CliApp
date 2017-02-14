@@ -21,6 +21,7 @@
 		    		</ul> 
 		    	</div>
 		    </div>
+		    <router-link to="/discovery/pickday" slot="left">clike me to pickday</router-link>
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>
@@ -28,6 +29,7 @@
 		<!-- 父组件中通过调用子组件并传递参数 -->
 		<!-- 为了父子组件之间的结构，通过父组件通过 props down  向下传递数据给子组件 events up 通过events 给父组件发送消息 -->
 		<popModel :popstatus="popstatus" :title="titleStr"></popModel>
+		<router-view></router-view>
 	</div>
 	
 </template>

@@ -54,6 +54,6 @@ const app = new Vue({
 
  
 ```
-![github](https://github.com/angusjiang/vue2.0CliApp/tree/master/src/images/123.png) 
+<img src="http://img1.vued.vanthink.cn/vued50dad691cb0fd445aece692ab58af89f.png" alt="" width="100%">
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

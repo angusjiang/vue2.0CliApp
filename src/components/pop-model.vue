@@ -17,7 +17,6 @@
 <script>
     import { Popup } from 'mint-ui';
     Vue.component(Popup.name, Popup);
-    var remberThis,remberUrl='';
     export default {
         data() {
             return {
@@ -45,8 +44,7 @@
             set(url,data,callback) {
                 var self = this; 
                 var url = url + '?' + '_req=' + new Date().getTime();
-                document.querySelector('iframe').src = url;
-                remberUrl = url;   
+                document.querySelector('iframe').src = url; 
                 document.querySelector('iframe').onload = function() {
                    
                     if(typeof callback === 'function') {
