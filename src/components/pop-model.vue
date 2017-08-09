@@ -17,11 +17,14 @@
 <script>
     import { Popup } from 'mint-ui';
     Vue.component(Popup.name, Popup);
+    import { mapState } from 'vuex'
+
     export default {
         data() {
             return {
                 url: '',
-                myResult: this.popstatus
+                // myResult: this.popstatus,
+
             }
         },
 
@@ -29,14 +32,34 @@
         props: ['popstatus','title'],
         watch: {
             //取消了双向数据绑定只能从父级中取得数据后copy一个副本myResult,通过watch 父级数据来改变副本
-            popstatus(val) {
-                this.myResult = val;
-            },
+            // popstatus(val) {
+            //     this.myResult = val;
+            // },
         },
+        //mapState 辅助函数帮助我们生成计算属性
+        // computed: mapState({
+        //     myResult: state => state.isClose
+        // }),
+        computed: {
+            myResult() {
+                return this.$store.state.isClose
+            }
+        },
+        // computed: {
+        //     ...mapState({
+                
+        //     })
+        // }
         methods: {
             hideModal(e) {
                 e.preventDefault();
-                this.myResult = false;
+
+                // this.myResult = false;
+                // this.$emit('changeStatus');
+
+                this.$store.commit('switchs');
+
+
                 document.querySelector('iframe').src = '';
                 document.querySelector('iframe').onload = function() {
                 }

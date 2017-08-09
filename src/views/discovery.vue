@@ -22,13 +22,15 @@
 		    	</div>
 		    </div>
 		    <router-link to="/discovery/pickday" slot="left">clike me to pickday</router-link>
+		    <vueupload :class="['pure-button','pure-button-primary','js-btn-crop']" :crop="true" url="./crop.php" extensions="png,gif,jpeg,jpg"></vueupload>
 		</div>
 		<div class="footer-nav">
 			<navigtor></navigtor>
 		</div>
 		<!-- 父组件中通过调用子组件并传递参数 -->
 		<!-- 为了父子组件之间的结构，通过父组件通过 props down  向下传递数据给子组件 events up 通过events 给父组件发送消息 -->
-		<popModel :popstatus="popstatus" :title="titleStr"></popModel>
+		<popModel :popstatus="popstatus" :title="titleStr"  @changeStatus="chages"></popModel>
+		
 		<router-view></router-view>
 	</div>
 	
@@ -36,6 +38,8 @@
 <script>
 	import navigtor from '../components/nav.vue'
 	import popModel from '../components/pop-model.vue'
+	import vueupload  from 'vue-core-image-upload'
+	import { mapState } from 'vuex'
 	export default{
 		data() {
 			return {
@@ -44,7 +48,7 @@
 		        loading: false,
 		        allLoaded: false,
 		        wrapperHeight: 0,
-		        popstatus: false,
+		        // popstatus: false,
 		        titleStr: '这是自定义的title',
 		        hehe: [
 		        	{
@@ -55,27 +59,42 @@
 		        		myTotal: 1,
 		        		detailLi: [{inpNum: 2},{inpNum:3}]
 		        	}
-		        ]
+		        ],
+		        src: 'http://img1.vued.vanthink.cn/vued0a233185b6027244f9d43e653227439a.png',
 			}
 		},
+		computed: mapState({
+            popstatus: state => state.isClose
+        }),
 		components: {
 			navigtor,
-			popModel
+			popModel,
+			vueupload
 		},
 		methods: {
 			pop() {
-				this.popstatus = true;
-				var url = 'http://game.vanthink.cn/TB2.0/#/detail/6803?is_preview=1&hide_controls=1' + '?_req=' + new Date().getTime();
+				// this.popstatus = true;
+
+				this.$store.commit('switchs');
+				
+				let url = 'http://game.vanthink.cn/TB2.0/#/detail/6803?is_preview=1&hide_controls=1' + '?_req=' + new Date().getTime();
 				popModel.methods.set(url,{},function () {
 					
 				});
 			},
-			test() {
-
-			}
+			imageuploaded(res) {
+	          if (res.errcode == 0) {
+	            this.src = 'http://img1.vued.vanthink.cn/vued751d13a9cb5376b89cb6719e86f591f3.png';
+	          }
+	        },
+	        chages() {
+	        	this.popstatus = false;
+	        }
 		},
 		created() {
-			var that = this;
+			let that = this;
+			this.popstatus = this.$store.isClose;
+			console.log(this.popstatus)
 			this.$watch('hehe',function(newD, oldD) {
 
 				for (let i = 0; i < that.hehe.length; i++) {
@@ -90,5 +109,10 @@
 	}
 </script>
 <style scoped>
-
+	/*.g-core-image-upload-btn {
+		position: absolute;
+		width: 100px;
+		height: 40px;
+		background: red;
+	}*/
 </style>

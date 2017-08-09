@@ -14,7 +14,7 @@ export default {
     //events up 
     increment: function () {
         this.counter += 1;
-        this.$emit('increment');
+        this.$emit('increment', {type: this.counter});
       }
   },
   created() {

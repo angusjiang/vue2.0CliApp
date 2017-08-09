@@ -23,6 +23,7 @@
 			<test @increment="count"></test>
 			<test @increment="count"></test>
 			<test @increment="count"></test>
+			<VueThreeArea></VueThreeArea>
 
 		</div>
 		<div class="footer-nav">
@@ -38,6 +39,7 @@
 	Vue.component(Cell.name, Cell);
 	import navigtor from '../components/nav.vue';
 	import test from '../components/test.vue'
+	import VueThreeArea from 'vue-three-area'
 	export default{
 		data() {
 			return {
@@ -47,11 +49,13 @@
 		},
 		components: {
 			navigtor,
-			test
+			test,
+			VueThreeArea
 		},
 		methods: {
-			count() {
+			count(res) {
 				this.total ++;
+				console.log(res)
 			}
 		}
 	}

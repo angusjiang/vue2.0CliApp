@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "element-ui": "^1.0.8",
-    "iview": "^0.9.10",
     "mint-ui": "^2.0.6",
     "vue": "^2.1.0",
-    "vue-fullcalendar": "^1.0.9"
+    "vue-core-image-upload": "^2.0.10",
+    "vue-fullcalendar": "^1.0.9",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -46,6 +47,7 @@
     "vue-router": "^2.1.1",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.0",
+    "vue-three-area": "^1.0.6",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",

@@ -100,7 +100,8 @@
 		    },
 		    goDetail(index, html) {
 		    	console.log(index, html);
-		    	router.push( { path:'/order/orderdetail',query: {id: html} } );
+		    	// router.push( { path:'/order/orderdetail',query: {id: html,name:'demo'} } );
+		    	router.push({name:'orderdetail',parames:{'id':123,name:'demo'}});
 		    }
 
 		}

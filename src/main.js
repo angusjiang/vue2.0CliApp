@@ -32,16 +32,20 @@ const router = new VueRouter({
   routes
 })
 
+import store from './js/store'  
+// console.log(store)
 window.router = router;
 // router.beforeEach((to, from, next) => {
 // 	console.log(to, from);
 // })
-router.afterEach((to, from) => {
-	console.log(to, from)
-});
+// router.afterEach((to, from) => {
+// 	console.log(to, from)
+// });
 
 /* eslint-disable no-new */
 const app = new Vue({
   //template: '<App/>', 这个会覆盖挂在元素下所有内容
-  router:router
+
+  router:router,
+  store: store,
 }).$mount('#app')
