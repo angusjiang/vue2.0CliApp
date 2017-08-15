@@ -10,6 +10,8 @@
 		</div>
 		<div class="app-content">
 		    <div @click="pop" :style="{'marginTop': '40px'}"> 点击我通过通用组件iframe跨域请求一个网页 </div>
+		    <div @click="pop2" :style="{'marginTop': '40px'}"> 点击我父子之间的双向数据绑定 </div>
+
 		    <div>
 		    	<div class="total" v-for="(item, index) in hehe" :style="{'marginBottom':'15px'}">
 		    		<p>my total : {{item.myTotal}}</p>
@@ -30,7 +32,7 @@
 		<!-- 父组件中通过调用子组件并传递参数 -->
 		<!-- 为了父子组件之间的结构，通过父组件通过 props down  向下传递数据给子组件 events up 通过events 给父组件发送消息 -->
 		<popModel :popstatus="popstatus" :title="titleStr"  @changeStatus="chages"></popModel>
-		
+		<popModel2 :popstatus2="popstatus2" :title="titleStr" @update:popstatus2="val => popstatus2 = val"></popModel2>
 		<router-view></router-view>
 	</div>
 	
@@ -38,6 +40,8 @@
 <script>
 	import navigtor from '../components/nav.vue'
 	import popModel from '../components/pop-model.vue'
+	import popModel2 from '../components/pop2.vue'
+
 	import vueupload  from 'vue-core-image-upload'
 	import { mapState } from 'vuex'
 	export default{
@@ -49,6 +53,7 @@
 		        allLoaded: false,
 		        wrapperHeight: 0,
 		        // popstatus: false,
+		        popstatus2: false,
 		        titleStr: '这是自定义的title',
 		        hehe: [
 		        	{
@@ -69,7 +74,8 @@
 		components: {
 			navigtor,
 			popModel,
-			vueupload
+			vueupload,
+			popModel2
 		},
 		methods: {
 			pop() {
@@ -77,6 +83,14 @@
 
 				this.$store.commit('switchs');
 				
+				let url = 'http://game.vanthink.cn/TB2.0/#/detail/6803?is_preview=1&hide_controls=1' + '?_req=' + new Date().getTime();
+				popModel.methods.set(url,{},function () {
+					
+				});
+			},
+			pop2() {
+				this.popstatus2 = true;
+				console.log(this.popstatus2);
 				let url = 'http://game.vanthink.cn/TB2.0/#/detail/6803?is_preview=1&hide_controls=1' + '?_req=' + new Date().getTime();
 				popModel.methods.set(url,{},function () {
 					
@@ -93,8 +107,8 @@
 		},
 		created() {
 			let that = this;
-			this.popstatus = this.$store.isClose;
-			console.log(this.popstatus)
+			// this.popstatus = this.$store.isClose;
+			// console.log(this.popstatus)
 			this.$watch('hehe',function(newD, oldD) {
 
 				for (let i = 0; i < that.hehe.length; i++) {

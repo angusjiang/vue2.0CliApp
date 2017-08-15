@@ -13,6 +13,8 @@
 		      <ul class="page-infinite-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50" infinite-scroll-immediate-check="false"  infinite-scroll-listen-for-event="needNow()">
 		        <li v-for="(item, index) in articles" class="page-infinite-listitem">
 		        	<router-link :to="{name: 'homedetail', params:{id: item.title}}" :style="{'display':'block','width':'100%','height':'100%'}">{{index}}{{ item.title }} click me</router-link></li>
+		        	<!-- <router-link :to="{path: 'home/detail', query:{id: item.title}}" :style="{'display':'block','width':'100%','height':'100%'}">{{index}}{{ item.title }} click me</router-link></li> -->
+
 		      </ul>
 		      <p v-show="loading" class="page-infinite-loading" :style="{'marginBottom':'55px'}">
 		        <mt-spinner type="fading-circle"></mt-spinner>
@@ -23,7 +25,6 @@
 		<div class="footer-nav">
 			<navigtor></navigtor>
 		</div>
-		
 		<router-view></router-view>
 	</div>
 </template>
@@ -44,6 +45,14 @@
 				page_no: 1,
 				wrapperHeight: 0,
 				hehe: 3
+			}
+		},
+		watch: {
+			'$route' (to, from) {
+				// console.log(to, from);
+				if (to.name === 'home') {
+					console.log('执行父级路由需要执行的事情');
+				};
 			}
 		},
 		components: {
@@ -91,7 +100,7 @@
 		},
 		created() {
 			this.needNow();
-		    // console.log(router);
+		    console.log(123);
 		}
 	}
 </script>

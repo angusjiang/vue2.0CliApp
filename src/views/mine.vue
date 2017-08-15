@@ -20,10 +20,18 @@
 			<mt-cell title="标题文字" icon="more" value="带 icon"></mt-cell>
 			<p>{{total}}</p>
 			<!-- 父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件 this is call events up -->
+			<test @increment="count" ref="count1">
+				<p slot="header">这个是可以看的见的</p>
+				<p>这是看不见的</p>
+			</test>
 			<test @increment="count"></test>
 			<test @increment="count"></test>
-			<test @increment="count"></test>
-			<VueThreeArea></VueThreeArea>
+
+			<VueThreeArea 
+			:placeholers="placeholers" 
+			@selectedF="selectedF"
+			:selectModule="selectModule">
+			</VueThreeArea>
 
 		</div>
 		<div class="footer-nav">
@@ -39,12 +47,15 @@
 	Vue.component(Cell.name, Cell);
 	import navigtor from '../components/nav.vue';
 	import test from '../components/test.vue'
-	import VueThreeArea from 'vue-three-area'
+	import VueThreeArea from '../components/area.vue'
+	// import VueThreeArea from 'vue-three-area'
 	export default{
 		data() {
 			return {
 				counter: 0,
-				total: 0
+				total: 0,
+				placeholers: '选择省,选择市,选择区',
+				selectModule: 'single',
 			}
 		},
 		components: {
@@ -56,8 +67,15 @@
 			count(res) {
 				this.total ++;
 				console.log(res)
+			},
+			//选中之后返回结果
+			selectedF(res) {
+				console.log(res)
 			}
-		}
+		},
+		created() {
+			console.log(this.$refs);
+  		}
 	}
 </script>
 <style scoped>

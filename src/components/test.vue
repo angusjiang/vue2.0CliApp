@@ -1,5 +1,10 @@
 <template>
-  <button  @click="increment">{{ counter }}</button>
+  <span>
+    <button  @click="increment">{{ counter }}</button>
+    <slot name="header"></slot>
+    <!-- <slot></solt> -->
+  </span>
+  
 </template>
 
 <script>
